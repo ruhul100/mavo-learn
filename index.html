@@ -8,10 +8,31 @@
 </head>
 
 <body>
-    <div mv-app id="mavoLearn">
-        My first Mavo app!
+    <div mv-app id="mavoLearn" mv-storage="local">
+        <span property="firstName">Lea</span>
+        <span property="last_name">Verou</span>
+        <hr>
+        <div style="background-color: [color];">
+            <input type="range" property="hue" max="360" aria-level="color" />
+            <input type="range" property="saturation" />
+            <input type="range" property="lightness" />
+
+            <input property="color" readonly value="hsl([hue], [saturation]%, [lightness]%)" />
+        </div>
+
+        <hr>
     </div>
 
+    <div mv-app="people" class="mv-autoedit" mv-source="https://test.mavo.io/data/persons.json">
+        [count(person)] people, [average(age)] years old on average:
+        <ul mv-list>
+            <li property="person" mv-list-item>
+                <strong property="name"></strong>
+                <br><span property="age"></span> years old
+                <br>Next year I will be [age + 1] years old.
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>
